@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日期倒计时</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        background-image: url('girl2.jpg');
+        background-size: cover;
+        background-position: center;
+        margin: 100;
+        padding: 100;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+    }
+    .box {
+        width: 300px;
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+    h2 {
+        font-size: 40px; /* 调整标题字体大小 */
+        color: #0d0d0e;
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 20px; /* 调整段万字体大小 */
+        color: #af1717;
+        margin: 0;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="box">
+        <h2>今天的日期</h2>
+        <p id="todayDate"></p>
+    </div>
+    <div class="box">
+        <h2>距离考研还剩</h2>
+        <p id="daysRemaining"></p>
+    </div>
+    <div class="box">
+        <h2>考研加油！</h2>
+    </div>
+</div>
+
+<script>
+function updateCountdown() {
+    var targetDate = new Date("2024-12-21");
+    var currentDate = new Date();
+    var timeDifference = targetDate.getTime() - currentDate.getTime();
+    var daysRemaining = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+    
+    document.getElementById("todayDate").textContent = currentDate.toDateString();
+    document.getElementById("daysRemaining").textContent = daysRemaining + " 天";
+}
+
+// 页面加载时执行一次更新
+updateCountdown();
+
+// 每秒更新一次剩余天数
+setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
